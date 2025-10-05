@@ -190,29 +190,50 @@ example : (P → R) → (S → Q) → (R → T) → (Q → R) → S → T := by
   done
 
 example : (P → Q) → ((P → Q) → P) → Q := by
-
   intro hpq hpqp
-
+  apply hpq
   apply hpqp at hpq
-
-
-
+  exact hpq
   done
 
 example : ((P → Q) → R) → ((Q → R) → P) → ((R → P) → Q) → P := by
-  sorry
+  intro hpqr hqrp hrpq
+
+  apply hqrp
+
+  intro q
+
+  apply hpqr
+  intro p
+  exact q
+
   done
 
 example : ((Q → P) → P) → (Q → R) → (R → P) → P := by
-  sorry
+  intro hqpp hqr hrp
+  apply hqpp
+  intro q
+  apply hqr at q
+  apply hrp at q
+  exact q
   done
 
 example : (((P → Q) → Q) → Q) → P → Q := by
-  sorry
+  intro hpqqq hp
+  apply hpqqq
+  intro hpq
+  apply hpq at hp
+  exact hp
   done
 
 example :
     (((P → Q → Q) → (P → Q) → Q) → R) →
       ((((P → P) → Q) → P → P → Q) → R) → (((P → P → Q) → (P → P) → Q) → R) → R := by
-  sorry
+
+  intro hpqqpqqr hppqppqr h2ppqppqr
+  apply hppqppqr
+  intro hppq p1 p2
+  apply hppq
+  intro p
+  exact p
   done
