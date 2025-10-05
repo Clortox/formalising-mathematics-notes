@@ -33,7 +33,8 @@ and the following tactics may also be useful:
 variable (P Q R : Prop)
 
 example : ¬True → False := by
-  sorry
+  intro h
+  exact h True.intro
   done
 
 example : False → ¬True := by
