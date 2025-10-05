@@ -190,10 +190,10 @@ example : (P → R) → (S → Q) → (R → T) → (Q → R) → S → T := by
   done
 
 example : (P → Q) → ((P → Q) → P) → Q := by
+
   intro hpq hpqp
 
   apply hpqp at hpq
-
 
 
 
